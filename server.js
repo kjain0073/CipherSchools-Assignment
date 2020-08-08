@@ -5,6 +5,7 @@ const path = require('path');
 var app = express()
 const mongoose = require('mongoose')
 var port = process.env.PORT || 5000
+const config = require("./key");
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -16,7 +17,7 @@ app.use(
 
 mongoose
   .connect(
-    process.env.MONGODB_URI || 'mongodb://localhost:27017/mernloginreg' ,
+    config.mongoURI,
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))
